@@ -1,11 +1,11 @@
-const bookForm = document.querySelector("#book-form");
-const booksList = document.getElementById("book-list");
-const bookTitle = document.querySelector("#book-title");
-const bookAuthor = document.querySelector("#book-author");
+const bookForm = document.querySelector('#book-form');
+const booksList = document.getElementById('book-list');
+const bookTitle = document.querySelector('#book-title');
+const bookAuthor = document.querySelector('#book-author');
 
 const booksData = [];
 
-bookForm.addEventListener("submit", () => {
+bookForm.addEventListener('submit', () => {
   const book = {
     id: Math.round(Math.random() * 10000000),
     title: bookTitle.value,
@@ -14,8 +14,8 @@ bookForm.addEventListener("submit", () => {
   AddBook(book);
   booksData.push(book);
   storageWriter();
-  bookTitle.value = "";
-  bookAuthor.value = "";
+  bookTitle.value = '';
+  bookAuthor.value = '';
 });
 
 function AddBook(book) {
@@ -29,27 +29,30 @@ function AddBook(book) {
 }
 
 function storageWriter() {
-  localStorage.setItem("books", JSON.stringify(booksData));
+  localStorage.setItem('books', JSON.stringify(booksData));
 }
 
-window.addEventListener("load", () => {
-  insertStorageIntoDom();
-  const bookRemove = document.querySelectorAll(".book-remove");
-  bookRemove.forEach((book) => {
-    book.addEventListener("click", (e) => {
-      const id = e.target.getAttribute("data-id");
-      for (let i = 0; i < booksData.length; i++) {
-        if (booksData[i].id === id) {
-          booksData.splice(i, 1);
-        }
-      }
-    });
-  });
-});
-function insertStorageIntoDom() {
-  const books = JSON.parse(localStorage.getItem("books"));
+window.addEventListener('load', () => {
+  const books = JSON.parse(localStorage.getItem('books'));
   for (let i = 0; i < books.length; i += 1) {
     booksData.push(books[i]);
     AddBook(books[i]);
   }
-}
+});
+
+document.addEventListener('click', (e) => {
+  const id = e.target.getAttribute('data-id');
+  for (let i = 0; i < booksData.length; i++) {
+    if (booksData[i].id === Number(id)) {
+      booksData.splice(i, 1);
+      console.log(booksData);
+      console.log('ReWrite the storage');
+      booksList.innerHTML = '';
+      for (let i = 0; i < booksData.length; i += 1) {
+        AddBook(booksData[i]);
+      }
+      storageWriter();
+      break;
+    }
+  }
+});
