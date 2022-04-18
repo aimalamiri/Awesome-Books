@@ -11,31 +11,45 @@ bookForm.addEventListener("submit", () => {
     title: bookTitle.value,
     author: bookAuthor.value,
   };
-  AddBook(book)
+  AddBook(book);
   booksData.push(book);
   storageWriter();
   bookTitle.value = "";
   bookAuthor.value = "";
 });
 
-function AddBook (book) {
+function AddBook(book) {
   const bookElement = `
  <li class="book">
   <h5>${book.title}</h5>
   <h6>${book.author}</h6>
   <button data-id="${book.id}" class="book-remove">Remove</button>
  </li>`;
- booksList.innerHTML += bookElement;
+  booksList.innerHTML += bookElement;
 }
 
 function storageWriter() {
-  localStorage.setItem('books', JSON.stringify(booksData));
+  localStorage.setItem("books", JSON.stringify(booksData));
 }
 
-window.addEventListener('load', () => {
-  const books = JSON.parse(localStorage.getItem('books'));
+window.addEventListener("load", () => {
+  insertStorageIntoDom();
+  const bookRemove = document.querySelectorAll(".book-remove");
+  bookRemove.forEach((book) => {
+    book.addEventListener("click", (e) => {
+      const id = e.target.getAttribute("data-id");
+      for (let i = 0; i < booksData.length; i++) {
+        if (booksData[i].id === id) {
+          booksData.splice(i, 1);
+        }
+      }
+    });
+  });
+});
+function insertStorageIntoDom() {
+  const books = JSON.parse(localStorage.getItem("books"));
   for (let i = 0; i < books.length; i += 1) {
     booksData.push(books[i]);
     AddBook(books[i]);
   }
-});
+}
