@@ -16,7 +16,7 @@ function AddBook(book) {
 }
 
 function storageWriter() {
-  localStorage.setItem("books", JSON.stringify(booksData));
+  localStorage.setItem('books', JSON.stringify(booksData));
 }
 
 bookForm.addEventListener('submit', () => {
@@ -42,7 +42,7 @@ window.addEventListener('load', () => {
 
 document.addEventListener('click', (e) => {
   const id = e.target.getAttribute('data-id');
-  for (let i = 0; i < booksData.length; i+= 1) {
+  for (let i = 0; i < booksData.length; i += 1) {
     if (booksData[i].id === Number(id)) {
       booksData.splice(i, 1);
       console.log(booksData);
