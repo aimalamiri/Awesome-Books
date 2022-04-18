@@ -19,11 +19,10 @@ AddBook(book)
 
 function AddBook (book) {
   const bookElement = `
- 
- <li>
- <h2>${book.title}<h2/>
- <span>${book.author}<span/>
- <button data-id="book.id" class="remove">Remove<button/>
- <li/> `;
+ <li class="book">
+  <h5>${book.title}</h5>
+  <h6>${book.author}</h6>
+  <button data-id="${book.id}" class="book-remove">Remove</button>
+ </li>`;
  booksList.innerHTML += bookElement;
 }
