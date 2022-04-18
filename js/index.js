@@ -5,6 +5,20 @@ const bookAuthor = document.querySelector('#book-author');
 
 const booksData = [];
 
+function AddBook(book) {
+  const bookElement = `
+ <li class="book">
+  <h5>${book.title}</h5>
+  <h6>${book.author}</h6>
+  <button data-id="${book.id}" class="book-remove">Remove</button>
+ </li>`;
+  booksList.innerHTML += bookElement;
+}
+
+function storageWriter() {
+  localStorage.setItem("books", JSON.stringify(booksData));
+}
+
 bookForm.addEventListener('submit', () => {
   const book = {
     id: Math.round(Math.random() * 10000000),
@@ -18,20 +32,6 @@ bookForm.addEventListener('submit', () => {
   bookAuthor.value = '';
 });
 
-function AddBook(book) {
-  const bookElement = `
- <li class="book">
-  <h5>${book.title}</h5>
-  <h6>${book.author}</h6>
-  <button data-id="${book.id}" class="book-remove">Remove</button>
- </li>`;
-  booksList.innerHTML += bookElement;
-}
-
-function storageWriter() {
-  localStorage.setItem('books', JSON.stringify(booksData));
-}
-
 window.addEventListener('load', () => {
   const books = JSON.parse(localStorage.getItem('books'));
   for (let i = 0; i < books.length; i += 1) {
@@ -42,7 +42,7 @@ window.addEventListener('load', () => {
 
 document.addEventListener('click', (e) => {
   const id = e.target.getAttribute('data-id');
-  for (let i = 0; i < booksData.length; i++) {
+  for (let i = 0; i < booksData.length; i+= 1) {
     if (booksData[i].id === Number(id)) {
       booksData.splice(i, 1);
       console.log(booksData);
