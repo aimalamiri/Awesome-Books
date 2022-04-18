@@ -11,8 +11,9 @@ bookForm.addEventListener("submit", () => {
     title: bookTitle.value,
     author: bookAuthor.value,
   };
-AddBook(book)
+  AddBook(book)
   booksData.push(book);
+  storageWriter();
   bookTitle.value = "";
   bookAuthor.value = "";
 });
@@ -26,3 +27,15 @@ function AddBook (book) {
  </li>`;
  booksList.innerHTML += bookElement;
 }
+
+function storageWriter() {
+  localStorage.setItem('books', JSON.stringify(booksData));
+}
+
+window.addEventListener('load', () => {
+  const books = JSON.parse(localStorage.getItem('books'));
+  for (let i = 0; i < books.length; i += 1) {
+    booksData.push(books[i]);
+    AddBook(books[i]);
+  }
+});
