@@ -34,9 +34,11 @@ bookForm.addEventListener('submit', () => {
 
 window.addEventListener('load', () => {
   const books = JSON.parse(localStorage.getItem('books'));
-  for (let i = 0; i < books.length; i += 1) {
-    booksData.push(books[i]);
-    AddBook(books[i]);
+  if (books) {
+    for (let i = 0; i < books.length; i += 1) {
+      booksData.push(books[i]);
+      AddBook(books[i]);
+    }
   }
 });
 
