@@ -12,9 +12,11 @@
     />
   </head>
   <body>
-    <h1>All Awesome Books</h1>
+    <h1 class="text-center">All Awesome Books</h1>
     <ol id="book-list"></ol>
-    <form action="#" id="book-form">
+    <div class="line mx-auto mt-2"></div>
+    <h2 class="text-center">Add a new book</h1>
+    <form action="#" id="book-form" class="text-center mx-5">
       <input
         type="text"
         name="book-name"
@@ -28,7 +30,9 @@
         placeholder="Book author"
       />
       <br />
-      <button type="submit">Add book</button>
+      <div class="flex flex-end">
+        <button type="submit">Add book</button>
+      </div>
     </form>
 
     <script src="./js/index.js"></script>

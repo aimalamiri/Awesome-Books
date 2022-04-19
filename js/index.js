@@ -6,7 +6,7 @@ const bookAuthor = document.querySelector('#book-author');
 function insertBookIntoDom(book) {
   const bookElement = `
       <li class="book">
-        <div><strong>${book.title}</strong> by ${book.author}</div>
+        <div><strong>"${book.title}"</strong> by ${book.author}</div>
         <button data-id="${book.id}" class="book-remove">Remove</button>
       </li>`;
   booksList.innerHTML += bookElement;
@@ -41,15 +41,17 @@ class Library {
 
   removeBook(id) {
     for (let i = 0; i < this.books.length; i += 1) {
-    if (this.books[i].id === Number(id)) {
-      this.books.splice(i, 1);
-      booksList.innerHTML = '';
-      for (let i = 0; i < this.books.length; i += 1) {
-        insertBookIntoDom(this.books[i]);
+      if (this.books[i].id === Number(id)) {
+        this.books.splice(i, 1);
+        booksList.innerHTML = '';
+        for (let i = 0; i < this.books.length; i += 1) {
+          insertBookIntoDom(this.books[i]);
+        }
+        this.#saveIntoStorage();
+        break;
       }
-      this.#saveIntoStorage();
-      break;
-  }}}
+    }
+  }
 
   load() {
     const booksData = this.#getFromStorage();
@@ -58,8 +60,8 @@ class Library {
         this.books.push(booksData[i]);
         insertBookIntoDom(booksData[i]);
       }
-    }}
-  
+    }
+  }
 }
 
 const library = new Library();
@@ -76,10 +78,7 @@ window.addEventListener('load', () => {
   library.load();
 });
 
-
-
 document.addEventListener('click', (e) => {
   const id = e.target.getAttribute('data-id');
   library.removeBook(id);
-
 });
