@@ -1,9 +1,9 @@
+import Book from './Book.js';
+import Library from './Library.js';
+
 const bookForm = document.querySelector('#book-form');
 const bookTitle = document.querySelector('#book-title');
 const bookAuthor = document.querySelector('#book-author');
-
-import Book from './Book.js';
-import Library from './Library.js';
 
 const library = new Library();
 

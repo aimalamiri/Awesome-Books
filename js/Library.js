@@ -1,5 +1,6 @@
-const booksList = document.getElementById('book-list');
 import insertBookIntoDom from './utilties.js';
+
+const booksList = document.getElementById('book-list');
 
 export default class Library {
   constructor() {
@@ -8,10 +9,6 @@ export default class Library {
 
   #saveIntoStorage() {
     localStorage.setItem('books', JSON.stringify(this.books));
-  }
-
-  #getFromStorage() {
-    return JSON.parse(localStorage.getItem('books'));
   }
 
   addBook(book) {
@@ -35,7 +32,7 @@ export default class Library {
   }
 
   load() {
-    const booksData = this.#getFromStorage();
+    const booksData = JSON.parse(localStorage.getItem('books'));
     if (booksData) {
       for (let i = 0; i < booksData.length; i += 1) {
         this.books.push(booksData[i]);
