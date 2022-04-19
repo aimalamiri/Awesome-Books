@@ -40,6 +40,18 @@ class Library {
     this.#saveIntoStorage();
   }
 
+  removeBook(id) {
+    for (let i = 0; i < this.books.length; i += 1) {
+    if (this.books[i].id === Number(id)) {
+      this.books.splice(i, 1);
+      booksList.innerHTML = '';
+      for (let i = 0; i < this.books.length; i += 1) {
+        insertBookIntoDom(this.books[i]);
+      }
+      this.#saveIntoStorage();
+      break;
+  }}}
+
   load() {
     const booksData = this.#getFromStorage();
     if (booksData) {
@@ -47,8 +59,8 @@ class Library {
         this.books.push(booksData[i]);
         insertBookIntoDom(booksData[i]);
       }
-    }
-  }
+    }}
+  
 }
 
 const library = new Library();
@@ -63,4 +75,12 @@ bookForm.addEventListener('submit', (e) => {
 
 window.addEventListener('load', () => {
   library.load();
+});
+
+
+
+document.addEventListener('click', (e) => {
+  const id = e.target.getAttribute('data-id');
+  library.removeBook(id);
+
 });
