@@ -6,8 +6,7 @@ const bookAuthor = document.querySelector('#book-author');
 function insertBookIntoDom(book) {
   const bookElement = `
       <li class="book">
-        <h5>${book.title}</h5>
-        <h6>${book.author}</h6>
+        <div><strong>${book.title}</strong> by ${book.author}</div>
         <button data-id="${book.id}" class="book-remove">Remove</button>
       </li>`;
   booksList.innerHTML += bookElement;

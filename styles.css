@@ -3,3 +3,26 @@
   justify-content: space-between;
   align-items: center;
 }
+
+#book-list {
+  border: solid black 2px;
+  justify-content: center;
+  align-items: center;
+  padding-inline-start: 0;
+}
+
+#book-list > li:nth-child(2n + 1) {
+  background-color: #ddd;
+}
+
+#book-list > li {
+  padding: 1rem;
+}
+
+.book-remove {
+  background-color: #dc3545;
+}
+
+.book-remove:hover {
+  opacity: 0.9;
+}
