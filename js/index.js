@@ -7,11 +7,11 @@ const booksData = [];
 
 function AddBook(book) {
   const bookElement = `
- <li class="book">
-  <h5>${book.title}</h5>
-  <h6>${book.author}</h6>
-  <button data-id="${book.id}" class="book-remove">Remove</button>
- </li>`;
+    <li class="book">
+      <h5>${book.title}</h5>
+      <h6>${book.author}</h6>
+      <button data-id="${book.id}" class="book-remove">Remove</button>
+    </li>`;
   booksList.innerHTML += bookElement;
 }
 
@@ -40,13 +40,11 @@ window.addEventListener('load', () => {
   }
 });
 
-document.addEventListener('click', (e) => {
+function removeBook(e) {
   const id = e.target.getAttribute('data-id');
   for (let i = 0; i < booksData.length; i += 1) {
     if (booksData[i].id === Number(id)) {
       booksData.splice(i, 1);
-      console.log(booksData);
-      console.log('ReWrite the storage');
       booksList.innerHTML = '';
       for (let i = 0; i < booksData.length; i += 1) {
         AddBook(booksData[i]);
@@ -55,4 +53,8 @@ document.addEventListener('click', (e) => {
       break;
     }
   }
+}
+
+document.addEventListener('click', (e) => {
+  removeBook(e);
 });
