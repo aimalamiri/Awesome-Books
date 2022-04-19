@@ -11,12 +11,12 @@
   padding-inline-start: 0;
 }
 
-#book-list > li:nth-child(2n + 1) {
-  background-color: #ddd;
-}
-
 #book-list > li {
   padding: 1rem;
+}
+
+#book-list > li:nth-child(2n + 1) {
+  background-color: #ddd;
 }
 
 #book-form input {
