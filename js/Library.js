@@ -1,7 +1,5 @@
 import insertBookIntoDom from './utilties.js';
 
-const booksList = document.getElementById('book-list');
-
 export default class Library {
   constructor() {
     this.books = [];

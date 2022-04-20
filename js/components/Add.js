@@ -21,5 +21,5 @@ export default function add() {
           <button type="submit">Add book</button>
         </div>
       </form>
-  `
+  `;
 }

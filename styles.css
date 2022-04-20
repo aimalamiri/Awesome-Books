@@ -26,45 +26,50 @@ a {
   padding-inline-start: 0;
 }
 
-#book-list > li {
-  padding: 1rem;
+.list-disc > li {
+  list-style: disc;
 }
 
 #book-list > li:nth-child(2n + 1) {
   background-color: #ddd;
 }
 
-#book-form input {
-  width: 100%;
-}
-
-button, input {
-    border:1px solid #4897DF;
-    border-radius: 5px;
-    padding: 10px 15px;
+button,
+input {
+  border: 1px solid #4897df;
+  border-radius: 5px;
+  padding: 10px 15px;
 }
 
 button {
-  background-color: #4897DF;
+  background-color: #4897df;
   color: #fff;
 }
 
-button:hover, button:focus {
+button:hover,
+button:focus {
   opacity: 0.9;
 }
 
-input,textarea,select {
-    background:#FFF;
-    border:1px solid #B3B7C1;
-    border-radius:2px;
-    box-shadow:none;
-    font-size:.8em;
-    height:30px;
+input,
+textarea,
+select {
+  background: #fff;
+  border: 1px solid #b3b7c1;
+  border-radius: 2px;
+  box-shadow: none;
+  font-size: 0.8em;
+  height: 30px;
 }
 
-input:hover, input:focus {
-    border:1px solid #65a6e2;
-    color:#65a6e2;
+input:hover,
+input:focus {
+  border: 1px solid #65a6e2;
+  color: #65a6e2;
+}
+
+#book-form input {
+  width: 100%;
 }
 
 .line {
@@ -176,10 +181,6 @@ input:hover, input:focus {
   bottom: 0;
 }
 
-.list-disc > li {
-  list-style: disc;
-}
-
-.inline-padding-start{
+.inline-padding-start {
   padding-inline-start: 40px;
 }
