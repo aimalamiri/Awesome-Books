@@ -29,6 +29,7 @@ dateTime.textContent = new Date().toLocaleString();
 
 import list from './components/List.js';
 import add from './components/Add.js';
+import contact from "./components/Contact.js";
 
 function addBook() {
   const bookForm = document.querySelector('#book-form');
@@ -45,16 +46,18 @@ function addBook() {
 }
 
 document.addEventListener('click', (e) => {
-  e.preventDefault();
   const link = e.target.getAttribute('data-link');
   if (link) {
     switch (link) {
-      case '/':
+      case "/":
         loadBooks();
         break;
-      case '/add':
+      case "/add":
         app.innerHTML = add();
         addBook();
+        break;
+      case "/contact":
+        app.innerHTML = contact();
         break;
       default:
         loadBooks();

@@ -175,3 +175,11 @@ input:hover, input:focus {
 .b-0 {
   bottom: 0;
 }
+
+.list-disc > li {
+  list-style: disc;
+}
+
+.inline-padding-start{
+  padding-inline-start: 40px;
+}
