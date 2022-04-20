@@ -4,6 +4,7 @@ import Library from './Library.js';
 const bookForm = document.querySelector('#book-form');
 const bookTitle = document.querySelector('#book-title');
 const bookAuthor = document.querySelector('#book-author');
+const dateTime = document.querySelector('#date-time');
 
 const library = new Library();
 
@@ -23,3 +24,5 @@ document.addEventListener('click', (e) => {
   const id = e.target.getAttribute('data-id');
   library.removeBook(id);
 });
+
+dateTime.textContent = (new Date()).toLocaleString();
