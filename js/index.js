@@ -1,28 +1,64 @@
 import Book from './Book.js';
 import Library from './Library.js';
 
-const bookForm = document.querySelector('#book-form');
-const bookTitle = document.querySelector('#book-title');
-const bookAuthor = document.querySelector('#book-author');
+const app = document.querySelector('#app');
 const dateTime = document.querySelector('#date-time');
 
 const library = new Library();
 
-bookForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-  const book = new Book(bookTitle.value, bookAuthor.value);
-  library.addBook(book);
-  bookTitle.value = '';
-  bookAuthor.value = '';
-});
+function loadBooks() {
+  app.innerHTML = '';
+  let ele = document.createRange().createContextualFragment(list(library));
+  app.append(ele);
+  const booksList = document.querySelector('#book-list');
+  booksList.innerHTML = '';
+  library.load(booksList);
+}
 
 window.addEventListener('load', () => {
-  library.load();
+  loadBooks();
 });
 
 document.addEventListener('click', (e) => {
   const id = e.target.getAttribute('data-id');
-  library.removeBook(id);
+  const booksList = document.getElementById('book-list');
+  library.removeBook(id, booksList);
 });
 
-dateTime.textContent = (new Date()).toLocaleString();
+dateTime.textContent = new Date().toLocaleString();
+
+import list from './components/List.js';
+import add from './components/Add.js';
+
+function addBook() {
+  const bookForm = document.querySelector('#book-form');
+  const bookTitle = document.querySelector('#book-title');
+  const bookAuthor = document.querySelector('#book-author');
+
+  bookForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const book = new Book(bookTitle.value, bookAuthor.value);
+    library.addBook(book);
+    bookTitle.value = '';
+    bookAuthor.value = '';
+  });
+}
+
+document.addEventListener('click', (e) => {
+  e.preventDefault();
+  const link = e.target.getAttribute('data-link');
+  if (link) {
+    switch (link) {
+      case '/':
+        loadBooks();
+        break;
+      case '/add':
+        app.innerHTML = add();
+        addBook();
+        break;
+      default:
+        loadBooks();
+        break;
+    }
+  }
+});

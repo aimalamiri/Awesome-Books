@@ -11,49 +11,13 @@
     <nav class="flex justify-between items-center px-5 py-2 bg-gray border">
       <a href="#" class="text-black">Awesome Books</a>
       <ul class="flex">
-        <li><a href="#" class="px-1 text-black">List</a></li>
-        <li><a href="#" class="px-1 text-black border-left">Add New</a></li>
-        <li><a href="#" class="px-1 text-black border-left">Contact</a></li>
+        <li><a href="#" data-link="/" class="nav-link px-1 text-black">List</a></li>
+        <li><a href="#" data-link="/add" class="nav-link px-1 text-black border-left">Add New</a></li>
+        <li><a href="#" data-link="/contact"class="nav-link px-1 text-black border-left">Contact</a></li>
       </ul>
     </nav>
     <div class="flex flex-end px-5 py-2" id="date-time"></div>
-    <div id="app" class="py-5">
-      <h1 class="text-center">All Awesome Books</h1>
-      <div class="px-5 mt-2">
-        <ol id="book-list"></ol>
-      </div>
-      <div class="line mx-auto my-2"></div>
-      <h2 class="text-center">Add a new book</h2>
-      <form action="#" id="book-form" class="text-center w-half mx-auto">
-        <input
-          type="text"
-          name="book-name"
-          id="book-title"
-          class="mt-2"
-          placeholder="Book title"
-        />
-        <input
-          type="text"
-          name="book-author"
-          id="book-author"
-          class="mt-2"
-          placeholder="Book author"
-        />
-        <br />
-        <div class="flex flex-end py-2">
-          <button type="submit">Add book</button>
-        </div>
-      </form>
-      <p>
-        Do you have any questions or you just want to say hello? <br />
-        you can reach out to us!
-      </p>
-      <ul>
-        <li>Our email: mail@mail.com</li>
-        <li>Our phone number: 12345667890</li>
-        <li>Our address: street name 2222, city name , country</li>
-      </ul>
-    </div>
+    <div id="app" class="py-5"></div>
 
     <footer class="py-2 px-5 bg-gray text-black border fixed b-0 w-full">
       <h4>Copyrights ...</h4>
